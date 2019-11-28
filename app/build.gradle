@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.yibei.baseframe"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation deps.Rxpermissions
+    //使用Rxpermissions需要先集成RxJava2
+    implementation deps.RxJava2
+    implementation deps.RxAndroid2
+    //在android立使用RxJava2必须集成
+    implementation deps.Rxlifecycle2
+    //对RxJava2的优化，解决内存泄漏
+    implementation deps.Rxlifecycle2Components
+    //对RxJava2的优化，解决内存泄漏（Android）
+    //Relays 是既是Observable也是Consumer的RxJava类型,不必要担心下游的触发的终止状态（onComplete 或 onError）
+    implementation deps.RxRelay
+    implementation deps.RxBinding
+    implementation deps.RxBindingSupport
+    implementation deps.RxBindingAppcompat
+    implementation deps.RxBindingDesign
+    implementation deps.RxBindingRecyclerview
+    implementation deps.RxBindingLeanback
+    //支持RxJava2
+    implementation deps.Retrofit2
+    implementation deps.Retrofit2Gson
+    implementation deps.Retrofit2Scalars
+    implementation deps.Retrofit2Rxjava2
+    //使Retrofit2可以使用Rxjava2的Observable代替Call回调
+    implementation deps.OkHttp3
+    implementation deps.autodispose
+    implementation deps.autodispose_archcomponents
+    implementation deps.Utilcode
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

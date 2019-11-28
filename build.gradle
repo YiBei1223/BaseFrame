@@ -1,0 +1,139 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.31'
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
+        maven { url 'https://maven.google.com' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases/" }
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.aliyun.ams:emas-services:1.0.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
+        maven { url 'https://maven.google.com' }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
+    }
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+    supportVersion = '1.0.0-beta01'
+    ext.nav_version = "1.0.0"
+
+
+    built = [
+            applicationId    : "com.yibei.baseframe",
+            versionCode      : 1,
+            versionName      : "1.0.1",
+            compileSdkVersion: 28,
+            minSdkVersion    : 17,
+            targetSdkVersion : 28
+    ]
+
+    deps = [
+            SupportV4                    : "com.android.support:support-v4:$supportVersion",
+            SupportAppcompat             : "com.android.support:appcompat-v7:$supportVersion",
+            Junit                        : "junit:junit:4.12",
+            MultiDex                     : 'androidx.multidex:multidex:2.0.0',
+            SupportConstraint            : 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3',
+            SupportDesign                : "com.google.android.material:material:$supportVersion",
+            CardView                     : "androidx.cardview:cardview:${supportVersion}",
+            RecyclerView                 : "androidx.recyclerview:recyclerview:${supportVersion}",
+            SupportAnnotation            : "androidx.annotation:annotation:${supportVersion}",
+            FastJson                     : 'com.alibaba:fastjson:1.1.70.android',
+            //使用@aar只下载他的源码，而他所依赖的其他库全部排除，比如这里使用aar就把他依赖的rxjava排除了，需要另外依赖
+            Rxpermissions                : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar',
+            RxAndroid2                   : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+            RxJava2                      : 'io.reactivex.rxjava2:rxjava:2.1.12',
+            RxBinding                    : 'com.jakewharton.rxbinding2:rxbinding:2.1.1',
+            RxBindingSupport             : 'com.jakewharton.rxbinding2:rxbinding-support-v4:2.1.1',
+            RxBindingAppcompat           : 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1',
+            RxBindingDesign              : 'com.jakewharton.rxbinding2:rxbinding-design:2.1.1',
+            RxBindingRecyclerview        : 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.1.1',
+            RxBindingLeanback            : 'com.jakewharton.rxbinding2:rxbinding-leanback-v17:2.1.1',
+            Retrofit2                    : 'com.squareup.retrofit2:retrofit:2.4.0',
+            Retrofit2Gson                : 'com.squareup.retrofit2:converter-gson:2.4.0',
+            Retrofit2Scalars             : 'com.squareup.retrofit2:converter-scalars:2.4.0',
+            Retrofit2Rxjava2             : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+            OkHttp3                      : 'com.squareup.okhttp3:logging-interceptor:3.10.0',
+            Rxlifecycle2                 : 'com.trello.rxlifecycle2:rxlifecycle:2.2.1',
+            Rxlifecycle2Components       : 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1',
+            RxRelay                      : 'com.jakewharton.rxrelay2:rxrelay:2.0.0',
+            LuBan                        : 'top.zibin:Luban:1.1.6',
+            Glide                        : 'com.github.bumptech.glide:glide:4.8.0',
+            GlideCompiler                : 'com.github.bumptech.glide:compiler:4.8.0',
+            GlideOkHttp3                 : "com.github.bumptech.glide:okhttp3-integration:4.8.0",
+            GlideTransformations         : 'jp.wasabeef:glide-transformations:3.1.1',
+            GpuImage                     : 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1',
+            //因为项目中已经依赖了Support里的RecyclerView，所以使用aar排除掉GlideRecyclerview里依赖的RecyclerView
+            GlideRecyclerview            : "com.github.bumptech.glide:recyclerview-integration:4.8.0@aar",
+            ZhiHuMatisse                 : 'com.zhihu.android:matisse:0.5.2-beta4',
+            debugLeakcanary              : 'com.squareup.leakcanary:leakcanary-android:1.5.4',
+            releaseLeakcanary            : 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4',
+            Logger                       : 'com.orhanobut:logger:2.2.0',
+            Zxing                        : 'cn.bingoogolapple:bga-qrcode-zxing:1.3.6',
+            Okdownload                   : "com.liulishuo.okdownload:okdownload:1.0.3",
+            OkdownloadSqlite             : "com.liulishuo.okdownload:sqlite:1.0.3",
+            OkdownloadOkhttp             : "com.liulishuo.okdownload:okhttp:1.0.3",
+            AVLoadingIndicatorView       : "com.wang.avi:library:2.1.3",
+            Rxbus                        : "com.blankj:rxbus:1.3@aar",
+            Utilcode                     : 'com.blankj:utilcode:1.19.1',
+            BaseRecyclerViewAdapterHelper: 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44',
+            Fragmentation                : 'me.yokeyword:fragmentation:1.3.6',
+            //单独项目使用的库
+            BuglyCrashReport             : 'com.tencent.bugly:crashreport_upgrade:latest.release',
+            BuglyNativeCrashReport       : 'com.tencent.bugly:nativecrashreport:latest.release',
+            Banner                       : 'com.youth.banner:banner:1.4.9',
+            Circleimageview              : 'de.hdodenhof:circleimageview:2.2.0',
+            PhotoView                    : 'com.github.chrisbanes:PhotoView:2.1.3',//九宫格图片库中需要
+            Jpush                        : 'cn.jiguang.sdk:jpush:3.1.5',
+            Jcore                        : 'cn.jiguang.sdk:jcore:1.2.3',
+            PickerView                   : 'com.contrarywind:Android-PickerView:4.1.6',
+            Appintro                     : "com.github.apl-devs:appintro:v4.2.3",
+            GaodeLocation                : 'com.amap.api:location:latest.integration',
+            GaodeMap3D                   : 'com.amap.api:3dmap:latest.integration',//高德导航包括了3D地图，所以注意不要重复
+            WeCaht                       : 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+',
+            Marqueeview                  : 'com.sunfusheng:marqueeview:1.3.3',//新闻(文字)轮播
+            OSS                          : 'com.aliyun.dpa:oss-android-sdk:+',//OSS上传文件
+            Kotlin                       : 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.30',//Kotlin依赖
+            appcompat                    : 'androidx.appcompat:appcompat:1.1.0-alpha04',
+//            lottie                       : 'com.airbnb.android:lottie:3.0.6',
+            //autodispose代替Rxlife 用于RxJava的订阅和解除
+            autodispose                  :"com.uber.autodispose:autodispose-android:1.2.0",
+            autodispose_archcomponents   :"com.uber.autodispose:autodispose-android-archcomponents:1.2.0",
+            navigation_fragment          :"android.arch.navigation:navigation-fragment:$nav_version", // use -ktx for Kotlin
+            navigation_ui                :"android.arch.navigation:navigation-ui:$nav_version",// use -ktx for Kotlin
+            navigation_kotlin            :"android.arch.navigation:navigation-ktx:$nav_version",// use -ktx for Kotlin
+            RefreshLayout                : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1',//下拉刷新控件
+            RefreshHeader                : 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1',//下拉刷新的头部
+            Floatingbutton               : 'com.github.clans:fab:1.6.4',//floatingbutton
+            superrecyclerview            : 'com.malinskiy:superrecyclerview:1.1.4',//superrecyclerview
+            ratingstar                   : 'com.github.ornolfr:rating-view:0.1.2@aar',//ratingstar
+            video                        : 'cn.jzvd:jiaozivideoplayer:7.0.5',//video
+            pic                          : 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.9',//pic
+            hotfix                       : 'com.aliyun.ams:alicloud-android-hotfix:3.2.11',//hotfix
+    ]
+}
