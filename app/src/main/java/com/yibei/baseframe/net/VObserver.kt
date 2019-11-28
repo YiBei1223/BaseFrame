@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.annotation.CallSuper
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.fubang.fish.App
+import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.Utils
 import com.fubang.fish.model.base.BaseResponse
-import com.orhanobut.logger.Logger
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import retrofit2.adapter.rxjava2.HttpException
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeoutException
  * Created by fww on 2019/3/29
  */
 abstract class VObserver<T> : Observer<BaseResponse<T>> {
-     var mContext: Context = App.myApp
+     var mContext: Context = Utils.getApp()
 
     override fun onSubscribe(d: Disposable) {
         //请求开始
@@ -44,7 +44,7 @@ abstract class VObserver<T> : Observer<BaseResponse<T>> {
             } else if (e is HttpException) {
                 if(e.code()==401){
                     val msgIntent = Intent("com.fubang.fish.logout")
-                    LocalBroadcastManager.getInstance(App.myApp).sendBroadcast(msgIntent)
+                    LocalBroadcastManager.getInstance(Utils.getApp()).sendBroadcast(msgIntent)
                     onFailure("登录过期 请重新登陆", true)
                 }
                 else
@@ -78,7 +78,7 @@ abstract class VObserver<T> : Observer<BaseResponse<T>> {
      */
     @CallSuper
     protected fun onFailure( message: String?, isShowMsg: Boolean) {
-        Logger.e("wrong message is : $message")
+        LogUtils.e("wrong message is : $message")
         onFail(message)
 //        ToastUtils.showLong(message)
         //判断状态码 进行拦截
