@@ -1,4 +1,4 @@
-package com.fubang.fish.net
+package com.yibei.baseframe.net
 
 /**
  * Create by YiBei on 2019/6/6

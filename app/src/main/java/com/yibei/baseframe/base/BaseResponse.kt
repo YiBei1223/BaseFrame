@@ -1,4 +1,4 @@
-package com.fubang.fish.model.base
+package com.yibei.baseframe.base
 
 
 

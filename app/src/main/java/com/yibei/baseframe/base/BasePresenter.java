@@ -3,8 +3,8 @@ package com.yibei.baseframe.base;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
-import com.fubang.fish.util.RxLifecycleUtils;
 import com.uber.autodispose.AutoDisposeConverter;
+import com.yibei.baseframe.util.RxLifecycleUtils;
 
 import org.jetbrains.annotations.NotNull;
 

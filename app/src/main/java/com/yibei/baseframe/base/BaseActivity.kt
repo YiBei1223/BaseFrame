@@ -1,4 +1,4 @@
-package com.fubang.fish.base
+package com.yibei.baseframe.base
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -12,13 +12,14 @@ import android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.fubang.fish.base.BaseFragment
 
 
 /**
  * Create by YiBei on 2019/6/6
  * Description : BaseActivity
  */
-abstract class BaseActivity : AppCompatActivity(), BaseFragment.OnFragmentInteractionListener{
+abstract class BaseActivity : AppCompatActivity(), BaseFragment.OnFragmentInteractionListener {
     /**
      * 设置Activity的布局ID
      *

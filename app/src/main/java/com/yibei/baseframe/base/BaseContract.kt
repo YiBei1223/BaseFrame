@@ -1,4 +1,4 @@
-package com.fubang.fish.base
+package com.yibei.baseframe.base
 
 
 import androidx.lifecycle.Lifecycle

@@ -7,7 +7,7 @@ import androidx.annotation.CallSuper
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.Utils
-import com.fubang.fish.model.base.BaseResponse
+import com.yibei.baseframe.base.BaseResponse
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import retrofit2.adapter.rxjava2.HttpException
