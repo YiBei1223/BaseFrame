@@ -127,7 +127,6 @@ ext {
             autodispose_archcomponents   :"com.uber.autodispose:autodispose-android-archcomponents:1.2.0",
             navigation_fragment          :"android.arch.navigation:navigation-fragment:$nav_version", // use -ktx for Kotlin
             navigation_ui                :"android.arch.navigation:navigation-ui:$nav_version",// use -ktx for Kotlin
-            navigation_kotlin            :"android.arch.navigation:navigation-ktx:$nav_version",// use -ktx for Kotlin
             RefreshLayout                : 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1',//下拉刷新控件
             RefreshHeader                : 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1',//下拉刷新的头部
             Floatingbutton               : 'com.github.clans:fab:1.6.4',//floatingbutton
